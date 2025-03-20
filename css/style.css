@@ -45,7 +45,7 @@ header a:hover,
   height: auto;
   max-height: 800px;
   border-radius: 5px;
-  margin-top: 5px;
+  margin-top: 20px;
 }
 
 .title {
@@ -53,7 +53,7 @@ header a:hover,
   text-align: center;
   border-radius: 5px;
   padding: 5px;
-  margin-top: 5px;
+  margin-top: 20px;
 }
 
 h1,
@@ -64,11 +64,10 @@ h2 {
 }
 
 .restaurant-container {
-  margin-top: 5px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  gap: 20px;
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 20px;
 }
 
 .restaurant {
