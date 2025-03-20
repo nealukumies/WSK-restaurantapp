@@ -35,7 +35,8 @@ header a {
   padding: 5px 25px;
 }
 
-header a:hover {
+header a:hover,
+.restaurant a:hover {
   background-color: #f15b42;
 }
 
@@ -55,8 +56,36 @@ header a:hover {
   margin-top: 5px;
 }
 
-h1 {
+h1,
+h2 {
   margin: 0;
   font-weight: normal;
+  padding: 5px;
+}
+
+.restaurant-container {
+  margin-top: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.restaurant {
+  background-color: #ffd372;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.restaurant img {
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.restaurant a {
+  color: #2c3d73;
+  text-decoration: none;
+  font-size: small;
+  display: flex;
+  flex-direction: column;
   padding: 5px;
 }
