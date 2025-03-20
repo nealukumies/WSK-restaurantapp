@@ -43,9 +43,9 @@ header a:hover,
 .logo img {
   width: 100%;
   height: auto;
+  max-height: 800px;
   border-radius: 5px;
   margin-top: 5px;
-  max-height: 600px;
 }
 
 .title {
@@ -67,7 +67,8 @@ h2 {
   margin-top: 5px;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  justify-content: flex-start;
+  gap: 20px;
 }
 
 .restaurant {
@@ -77,8 +78,10 @@ h2 {
 }
 
 .restaurant img {
+  width: 100%;
+  height: auto;
   border-radius: 5px;
-  padding: 5px;
+  display: block;
 }
 
 .restaurant a {
