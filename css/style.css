@@ -107,7 +107,8 @@ h2 {
 }
 
 .register,
-.login {
+.login,
+.details {
   display: flex;
   justify-self: center;
   margin-top: 20px;
@@ -115,12 +116,19 @@ h2 {
   border-radius: 5px;
   background-color: #ffd372;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 form {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.details img {
+  border-radius: 5px;
 }
 
 input {
