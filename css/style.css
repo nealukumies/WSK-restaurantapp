@@ -152,6 +152,14 @@ dialog {
   border-color: #f15b42;
 }
 
+.map-modal {
+  width: 80%;
+}
+
+dialog button {
+  margin-top: 20px;
+}
+
 table {
   color: #2c3d73;
   border-radius: 5px;

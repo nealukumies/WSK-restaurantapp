@@ -1,5 +1,6 @@
 import {renderDaily} from './renderDaily.js';
 import {renderWeekly} from './renderWeekly.js';
+import {showMap} from './showMap.js';
 
 export function renderRestaurants(restaurants) {
   const restContainer = document.querySelector('.restaurant-container');
@@ -34,6 +35,7 @@ export function renderRestaurants(restaurants) {
 
     const locationA = document.createElement('button');
     locationA.innerHTML = 'Sijainti';
+    locationA.addEventListener('click', () => showMap(restaurant));
 
     const dailyA = document.createElement('button');
     dailyA.innerHTML = 'Päivän ruokalista';
