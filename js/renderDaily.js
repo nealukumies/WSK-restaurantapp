@@ -4,7 +4,7 @@ export async function renderDaily(restaurant) {
   const dialog = document.querySelector('dialog');
   dialog.showModal();
   try {
-    const menu = await getDaily(restaurant._id, 'en');
+    const menu = await getDaily(restaurant._id, 'fi');
 
     if (menu.length > 0) {
       const menuTable = document.createElement('table');

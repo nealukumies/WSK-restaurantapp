@@ -1,4 +1,5 @@
 import {renderDaily} from './renderDaily.js';
+import {renderWeekly} from './renderWeekly.js';
 
 export function renderRestaurants(restaurants) {
   const restContainer = document.querySelector('.restaurant-container');
@@ -40,6 +41,7 @@ export function renderRestaurants(restaurants) {
 
     const weeklyA = document.createElement('button');
     weeklyA.innerHTML = 'Viikon ruokalista';
+    weeklyA.addEventListener('click', () => renderWeekly(restaurant));
 
     restaurantDiv.append(img, h2, locationA, dailyA, weeklyA);
     restContainer.appendChild(restaurantDiv);
