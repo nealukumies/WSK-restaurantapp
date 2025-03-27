@@ -28,16 +28,13 @@ export function renderRestaurants(restaurants) {
     h2.setAttribute('class', 'restaurant-name');
     h2.innerHTML = restaurant.name;
 
-    const locationA = document.createElement('a');
-    locationA.setAttribute('href', 'sijaintiurl');
+    const locationA = document.createElement('button');
     locationA.innerHTML = 'Sijainti';
 
-    const dailyA = document.createElement('a');
-    dailyA.setAttribute('href', 'sruokalistaurl');
+    const dailyA = document.createElement('button');
     dailyA.innerHTML = 'Päivän ruokalista';
 
-    const weeklyA = document.createElement('a');
-    weeklyA.setAttribute('href', 'viikonurl');
+    const weeklyA = document.createElement('button');
     weeklyA.innerHTML = 'Viikon ruokalista';
 
     restaurantDiv.append(img, h2, locationA, dailyA, weeklyA);
