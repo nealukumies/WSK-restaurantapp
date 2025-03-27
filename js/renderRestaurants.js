@@ -1,3 +1,5 @@
+import {renderDaily} from './renderDaily.js';
+
 export function renderRestaurants(restaurants) {
   const restContainer = document.querySelector('.restaurant-container');
 
@@ -16,6 +18,7 @@ export function renderRestaurants(restaurants) {
 
   for (let i = 0; i < restaurants.length; i++) {
     const restaurant = restaurants[i];
+
     const restaurantDiv = document.createElement('div');
     restaurantDiv.setAttribute('class', 'restaurant');
 
@@ -33,6 +36,7 @@ export function renderRestaurants(restaurants) {
 
     const dailyA = document.createElement('button');
     dailyA.innerHTML = 'Päivän ruokalista';
+    dailyA.addEventListener('click', () => renderDaily(restaurant));
 
     const weeklyA = document.createElement('button');
     weeklyA.innerHTML = 'Viikon ruokalista';
