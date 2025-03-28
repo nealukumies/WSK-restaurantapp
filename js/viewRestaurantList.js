@@ -2,7 +2,11 @@ import {renderDaily} from './renderDaily.js';
 import {renderWeekly} from './renderWeekly.js';
 import {showMap} from './showMap.js';
 
-export function renderRestaurants(restaurants) {
+export function viewRestaurantList(restaurants) {
+  const container = document.querySelector('.container');
+  container.classList.remove('show-map');
+  container.classList.add('show-list');
+
   const restContainer = document.querySelector('.restaurant-container');
 
   const foodImages = [

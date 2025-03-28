@@ -1,5 +1,6 @@
 import {getRestaurants} from './getRestaurants.js';
-import {renderRestaurants} from './renderRestaurants.js';
+import {viewRestaurantMap} from './viewRestaurantMap.js';
+import {viewRestaurantList} from './viewRestaurantList.js';
 
 /*
         <div class="restaurant">
@@ -16,12 +17,13 @@ import {renderRestaurants} from './renderRestaurants.js';
           <a class="menu-week" href="viikonlistaurl">Viikon ruokalista</a>
         </div>
 */
+
 async function init() {
   try {
     restaurants = await getRestaurants();
     if (restaurants && Array.isArray(restaurants)) {
       restaurants.sort((a, b) => a.name.localeCompare(b.name));
-      renderRestaurants(restaurants);
+      viewRestaurantList(restaurants);
     } else {
       console.error('Failed to fetch restaurants or invalid data format.');
       const body = document.querySelector('body');
@@ -37,3 +39,13 @@ async function init() {
 
 let restaurants;
 init();
+const filter = document.querySelector('.filter');
+const listButton = document.createElement('button');
+listButton.innerHTML = 'Näytä listana';
+listButton.addEventListener('click', () => viewRestaurantList(restaurants));
+filter.appendChild(listButton);
+
+const mapButton = document.createElement('button');
+mapButton.innerHTML = 'Näytä kartalla';
+mapButton.addEventListener('click', () => viewRestaurantMap(restaurants));
+filter.appendChild(mapButton);

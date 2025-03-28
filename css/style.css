@@ -57,7 +57,8 @@ button:hover {
   margin-top: 20px;
 }
 
-.title {
+.title,
+.filter {
   background-color: #ffd372;
   text-align: center;
   border-radius: 5px;
@@ -72,11 +73,21 @@ h2 {
   padding: 5px;
 }
 
-.restaurant-container {
+.filter {
+  background-color: #ffd372;
+  display: flex;
+  justify-content: flex-end;
+  border-radius: 5px;
+  padding: 5px;
   margin-top: 20px;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-gap: 20px;
+}
+
+.filter button {
+  margin-left: 5px;
+}
+
+.restaurant-container {
+  display: none;
 }
 
 .restaurant {
@@ -152,8 +163,32 @@ dialog {
   border-color: #f15b42;
 }
 
+.map {
+  display: flex;
+}
+
 .map-modal {
   width: 80%;
+}
+
+.map-container {
+  display: none;
+}
+
+.show-map .map-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  width: 100%;
+  height: 500px;
+  border-radius: 5px;
+}
+
+.show-list .restaurant-container {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 20px;
 }
 
 dialog button {
@@ -178,12 +213,21 @@ td {
 }
 
 @media only screen and (max-width: 600px) {
-  .restaurant-container {
+  body {
+    font-size: small;
+  }
+  .show-list .restaurant-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
   }
   .restaurant img {
-    max-width: 250px;
+    width: 100%;
+  }
+
+  .show-map .map-container {
+    width: auto;
+    height: 200px;
   }
 }
