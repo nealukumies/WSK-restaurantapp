@@ -5,9 +5,17 @@ export function viewRestaurantMap(restaurants) {
   container.classList.remove('show-list');
   container.classList.add('show-map');
 
-  const mapContainer = document.querySelector('.map-container');
+  const existingMap = document.getElementById('map-container');
+  if (existingMap) existingMap.remove();
+
+  const mapContainer = document.createElement('div');
+  mapContainer.setAttribute('id', 'map');
+  mapContainer.classList.add('map-container');
+  mapContainer.style.display = 'block';
+
   mapContainer.innerHTML = '';
   mapContainer.style.display = 'block';
+  container.appendChild(mapContainer);
 
   const options = {
     enableHighAccuracy: true,

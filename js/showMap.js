@@ -3,6 +3,10 @@ export function showMap(restaurant) {
   dialog.classList.add('map-modal');
   dialog.innerHTML = '';
   dialog.showModal();
+  const existingMap = document.getElementById('map');
+  if (existingMap) {
+    existingMap.remove();
+  }
   const mapContainer = document.createElement('div');
   mapContainer.id = 'map';
   mapContainer.style.width = '100%';
