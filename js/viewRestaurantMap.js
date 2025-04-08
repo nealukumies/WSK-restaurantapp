@@ -45,6 +45,7 @@ export function viewRestaurantMap(restaurants) {
     const marker = L.marker(coords).addTo(mainmap);
 
     const popupContent = document.createElement('div');
+    popupContent.setAttribute('class', 'pop-up');
     popupContent.innerHTML = `<h3>${restaurant.name}</h3>`;
 
     const dailyA = document.createElement('button');
