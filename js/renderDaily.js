@@ -27,7 +27,11 @@ export async function renderDaily(restaurant) {
         coursetd.innerHTML = course.name;
         const pricetd = document.createElement('td');
         pricetd.setAttribute('class', 'price-td');
-        pricetd.innerHTML = course.price;
+        if (course.price) {
+          pricetd.innerHTML = course.price;
+        } else {
+          pricetd.innerHTML = '';
+        }
         row.append(coursetd, pricetd);
         tbody.appendChild(row);
       }

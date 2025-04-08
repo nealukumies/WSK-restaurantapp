@@ -13,8 +13,8 @@ export async function renderWeekly(restaurant) {
         h2.innerHTML = day.date;
         dialog.appendChild(h2);
         const menuTable = document.createElement('table');
-
-        menuTable.innerHTML = `
+        if (day.courses.length > 0) {
+          menuTable.innerHTML = `
             <thead>
               <tr>
               <th>Ruoka</th>
@@ -24,18 +24,25 @@ export async function renderWeekly(restaurant) {
             <tbody>
             </tbody>
             `;
-        const tbody = menuTable.querySelector('tbody');
-        console.log(day.courses);
-        for (const course of day.courses) {
-          const row = document.createElement('tr');
-          const coursetd = document.createElement('td');
-          coursetd.setAttribute('class', 'course-td');
-          coursetd.innerHTML = course.name;
-          const pricetd = document.createElement('td');
-          pricetd.setAttribute('class', 'price-td');
-          pricetd.innerHTML = course.price;
-          row.append(coursetd, pricetd);
-          tbody.appendChild(row);
+          const tbody = menuTable.querySelector('tbody');
+          console.log(day.courses);
+          for (const course of day.courses) {
+            const row = document.createElement('tr');
+            const coursetd = document.createElement('td');
+            coursetd.setAttribute('class', 'course-td');
+            coursetd.innerHTML = course.name;
+            const pricetd = document.createElement('td');
+            pricetd.setAttribute('class', 'price-td');
+            if (course.price) {
+              pricetd.innerHTML = course.price;
+            } else {
+              pricetd.innerHTML = '';
+            }
+            row.append(coursetd, pricetd);
+            tbody.appendChild(row);
+          }
+        } else {
+          menuTable.innerHTML = 'Ei ruokalistaa tälle päivälle.';
         }
         dialog.appendChild(menuTable);
       }
