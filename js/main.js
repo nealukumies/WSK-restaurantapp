@@ -29,7 +29,7 @@ async function init() {
       const body = document.querySelector('body');
       const h2 = document.createElement('h2');
       h2.innerHTML =
-        'Check connection to restaurant-API. Use VPN outside of Metropolia.';
+        'Tarkista VPN-yhteys. Sovellus toimii vain Metropolian verkossa.';
       body.appendChild(h2);
     }
   } catch (error) {

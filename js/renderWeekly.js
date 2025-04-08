@@ -17,8 +17,8 @@ export async function renderWeekly(restaurant) {
         menuTable.innerHTML = `
             <thead>
               <tr>
-              <th>Course</th>
-              <th>Price</th>
+              <th>Ruoka</th>
+              <th>Hinta</th>
               </tr>
             </thead>
             <tbody>
@@ -29,8 +29,10 @@ export async function renderWeekly(restaurant) {
         for (const course of day.courses) {
           const row = document.createElement('tr');
           const coursetd = document.createElement('td');
+          coursetd.setAttribute('class', 'course-td');
           coursetd.innerHTML = course.name;
           const pricetd = document.createElement('td');
+          pricetd.setAttribute('class', 'price-td');
           pricetd.innerHTML = course.price;
           row.append(coursetd, pricetd);
           tbody.appendChild(row);

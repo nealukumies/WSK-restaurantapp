@@ -161,6 +161,11 @@ dialog {
   background-color: #ffd372;
   border-radius: 5px;
   border-color: #f15b42;
+  width: 80%;
+}
+
+dialog button {
+  margin-top: 20px;
 }
 
 .map {
@@ -191,8 +196,10 @@ dialog {
   grid-gap: 20px;
 }
 
-dialog button {
-  margin-top: 20px;
+.pop-up button {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
 }
 
 table {
@@ -210,6 +217,14 @@ td {
   border-color: #f15b42;
   border-radius: 5px;
   padding: 5px;
+}
+
+.course-td {
+  width: 50%;
+}
+
+.price-td {
+  width: 50%;
 }
 
 @media only screen and (max-width: 600px) {
