@@ -34,4 +34,5 @@ export function showMap(restaurant) {
     dialog.close();
   });
   dialog.appendChild(closeButton);
+  
 }

@@ -1,3 +1,6 @@
+import {renderDaily} from './renderDaily.js';
+import {renderWeekly} from './renderWeekly.js';
+
 let mainmap;
 
 export function viewRestaurantMap(restaurants) {
@@ -39,9 +42,22 @@ export function viewRestaurantMap(restaurants) {
       restaurant.location.coordinates[1],
       restaurant.location.coordinates[0],
     ];
-    L.marker(coords)
-      .addTo(mainmap)
-      .bindPopup(`<h3>${restaurant.name}</h3><p>${restaurant.address}</p>`);
+    const marker = L.marker(coords).addTo(mainmap);
+
+    const popupContent = document.createElement('div');
+    popupContent.innerHTML = `<h3>${restaurant.name}</h3>`;
+
+    const dailyA = document.createElement('button');
+    dailyA.innerHTML = 'Päivän ruokalista';
+    dailyA.addEventListener('click', () => renderDaily(restaurant));
+    popupContent.appendChild(dailyA);
+
+    const weeklyA = document.createElement('button');
+    weeklyA.innerHTML = 'Viikon ruokalista';
+    weeklyA.addEventListener('click', () => renderWeekly(restaurant));
+    popupContent.appendChild(weeklyA);
+
+    marker.bindPopup(popupContent);
   }
 }
 
