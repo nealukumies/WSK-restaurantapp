@@ -7,9 +7,8 @@ export async function showCities(restaurants) {
   const cities = await getCities(restaurants);
   const input = document.querySelector('.city-input');
   const allLi = document.createElement('li');
-  allLi.innerHTML = 'Kaikki ravintolat';
+  allLi.innerHTML = 'Kaikki';
   allLi.addEventListener('click', () => {
-    input.value = 'Kaikki ravintolat';
     viewRestaurantList(restaurants);
     dropdownContent.style.display = 'none';
   });
@@ -18,8 +17,6 @@ export async function showCities(restaurants) {
     const li = document.createElement('li');
     li.innerHTML = city;
     li.addEventListener('click', () => {
-      input.value = city;
-
       const filteredRestaurants = restaurants.filter(
         (restaurant) => restaurant.city.toLowerCase() === city.toLowerCase()
       );

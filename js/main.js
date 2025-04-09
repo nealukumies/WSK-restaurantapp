@@ -2,6 +2,7 @@ import {getRestaurants} from './getRestaurants.js';
 import {viewRestaurantMap} from './viewRestaurantMap.js';
 import {viewRestaurantList} from './viewRestaurantList.js';
 import {showCities} from './showCities.js';
+import {showCompanies} from './showCompanies.js';
 
 async function init() {
   try {
@@ -33,7 +34,7 @@ async function init() {
 
       const companyInput = document.querySelector('.company-input');
       companyInput.addEventListener('focus', () => {
-        showCities(restaurants);
+        showCompanies(restaurants);
       });
 
       companyInput.addEventListener('input', (event) => {
@@ -41,7 +42,7 @@ async function init() {
         const filteredRestaurants = restaurants.filter((restaurant) =>
           restaurant.company.toLowerCase().startsWith(searchTerm)
         );
-        showCities(filteredRestaurants);
+        showCompanies(filteredRestaurants);
       });
     } else {
       console.error('Failed to fetch restaurants or invalid data format.');

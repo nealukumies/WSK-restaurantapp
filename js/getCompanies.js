@@ -4,5 +4,5 @@ export async function getCompanies(restaurants) {
     console.log(restaurant.company);
     companySet.add(restaurant.company);
   }
-  return Array.from(citySet).sort();
+  return Array.from(companySet).sort();
 }
