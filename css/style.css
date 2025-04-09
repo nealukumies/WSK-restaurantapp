@@ -89,15 +89,15 @@ h2 {
   position: relative;
 }
 
-.city-input {
-  width: 100%;
-  padding: 8px;
-}
-.dropdown-content {
+.dropdown-content,
+.dropdown-content-company {
   display: none;
   position: absolute;
-  background-color: white;
-  min-width: 160px;
+  border-radius: 5px;
+  padding: 5px;
+  margin-left: 5px;
+  background-color: #ffd372;
+  min-width: 150px;
   z-index: 1;
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
 }
@@ -106,15 +106,19 @@ h2 {
   cursor: pointer;
   list-style: none;
   text-align: left;
+  padding: 2px;
 }
 
 .dropdown-content li:hover {
-  background-color: #ddd;
+  background-color: #f15b42;
+  border-radius: 5px;
 }
 
-input {
+.city-input,
+.company-input {
   border-radius: 5px;
   margin-left: 5px;
+  padding: 8px;
 }
 
 .restaurant-container {

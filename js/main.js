@@ -18,15 +18,28 @@ async function init() {
       const mapButton = document.querySelector('.map-button');
       mapButton.addEventListener('click', () => viewRestaurantMap(restaurants));
 
-      const input = document.querySelector('.city-input');
-      input.addEventListener('focus', () => {
+      const cityInput = document.querySelector('.city-input');
+      cityInput.addEventListener('focus', () => {
         showCities(restaurants);
       });
 
-      input.addEventListener('input', (event) => {
+      cityInput.addEventListener('input', (event) => {
         const searchTerm = event.target.value.toLowerCase();
         const filteredRestaurants = restaurants.filter((restaurant) =>
           restaurant.city.toLowerCase().startsWith(searchTerm)
+        );
+        showCities(filteredRestaurants);
+      });
+
+      const companyInput = document.querySelector('.company-input');
+      companyInput.addEventListener('focus', () => {
+        showCities(restaurants);
+      });
+
+      companyInput.addEventListener('input', (event) => {
+        const searchTerm = event.target.value.toLowerCase();
+        const filteredRestaurants = restaurants.filter((restaurant) =>
+          restaurant.company.toLowerCase().startsWith(searchTerm)
         );
         showCities(filteredRestaurants);
       });
