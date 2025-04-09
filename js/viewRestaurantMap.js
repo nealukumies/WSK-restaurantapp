@@ -8,7 +8,7 @@ export function viewRestaurantMap(restaurants) {
   container.classList.remove('show-list');
   container.classList.add('show-map');
 
-  const existingMap = document.getElementById('map-container');
+  const existingMap = document.getElementById('map');
   if (existingMap) existingMap.remove();
 
   const mapContainer = document.createElement('div');
@@ -68,7 +68,7 @@ function success(pos) {
 
   L.marker([crd.latitude, crd.longitude])
     .addTo(mainmap)
-    .bindPopup('You are here!')
+    .bindPopup('Olet täällä!')
     .openPopup();
 }
 
