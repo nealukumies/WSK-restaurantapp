@@ -25,6 +25,11 @@ export function viewRestaurantList(restaurants) {
   for (let i = 0; i < restaurants.length; i++) {
     const restaurant = restaurants[i];
 
+    // Clear the container before rendering new restaurants
+    if (i === 0) {
+      restContainer.innerHTML = '';
+    }
+
     const restaurantDiv = document.createElement('div');
     restaurantDiv.setAttribute('class', 'restaurant');
 
