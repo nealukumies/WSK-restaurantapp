@@ -91,7 +91,8 @@ h2 {
 }
 
 .dropdown-content,
-.dropdown-content-company {
+.dropdown-content-company,
+.dropdown-content-name {
   display: none;
   position: absolute;
   border-radius: 5px;
@@ -104,7 +105,8 @@ h2 {
 }
 
 .dropdown-content li,
-.dropdown-content-company li {
+.dropdown-content-company li,
+.dropdown-content-name li {
   cursor: pointer;
   list-style: none;
   text-align: left;
@@ -112,13 +114,15 @@ h2 {
 }
 
 .dropdown-content li:hover,
-.dropdown-content-company li:hover {
+.dropdown-content-company li:hover,
+.dropdown-content-name li:hover {
   background-color: #f15b42;
   border-radius: 5px;
 }
 
 .city-input,
-.company-input {
+.company-input,
+.name-input {
   border-radius: 5px;
   margin-left: 5px;
   padding: 8px;

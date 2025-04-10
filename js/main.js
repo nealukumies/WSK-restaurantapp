@@ -1,8 +1,7 @@
 import {getRestaurants} from './getRestaurants.js';
 import {viewRestaurantMap} from './viewRestaurantMap.js';
 import {viewRestaurantList} from './viewRestaurantList.js';
-import {showCities} from './showCities.js';
-import {showCompanies} from './showCompanies.js';
+import {showDropdown} from './showDropDown.js';
 
 async function init() {
   try {
@@ -21,28 +20,32 @@ async function init() {
 
       const cityInput = document.querySelector('.city-input');
       cityInput.addEventListener('focus', () => {
-        showCities(restaurants);
-      });
-
-      cityInput.addEventListener('input', (event) => {
-        const searchTerm = event.target.value.toLowerCase();
-        const filteredRestaurants = restaurants.filter((restaurant) =>
-          restaurant.city.toLowerCase().startsWith(searchTerm)
-        );
-        showCities(filteredRestaurants);
+        showDropdown({
+          restaurants,
+          filterKey: 'city',
+          dropdownClass: '.dropdown-content',
+          inputSelector: '.city-input',
+        });
       });
 
       const companyInput = document.querySelector('.company-input');
       companyInput.addEventListener('focus', () => {
-        showCompanies(restaurants);
+        showDropdown({
+          restaurants,
+          filterKey: 'company',
+          dropdownClass: '.dropdown-content-company',
+          inputSelector: '.company-input',
+        });
       });
 
-      companyInput.addEventListener('input', (event) => {
-        const searchTerm = event.target.value.toLowerCase();
-        const filteredRestaurants = restaurants.filter((restaurant) =>
-          restaurant.company.toLowerCase().startsWith(searchTerm)
-        );
-        showCompanies(filteredRestaurants);
+      const nameInput = document.querySelector('.name-input');
+      nameInput.addEventListener('focus', () => {
+        showDropdown({
+          restaurants,
+          filterKey: 'name',
+          dropdownClass: '.dropdown-content-name',
+          inputSelector: '.name-input',
+        });
       });
     } else {
       console.error('Failed to fetch restaurants or invalid data format.');
