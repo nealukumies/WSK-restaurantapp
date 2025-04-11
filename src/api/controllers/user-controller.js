@@ -37,11 +37,11 @@ const postUser = async (req, res, next) => {
       password: hashedPassword,
       email: req.body.email,
     });
-    res.json({message: 'new user added', result});
+    res.json({message: 'Rekisteröinti onnistunut! ', result});
   } catch (error) {
-    console.error('Error adding user:', error);
+    console.error('Rekisteröinti ei onnistunut:', error);
     if (error.code === 'ER_DUP_ENTRY') {
-      const err = new Error('Duplicate entry, user already exists');
+      const err = new Error('Käyttäjänimi on jo käytössä, kokeile toista');
       err.status = 400;
       return next(err);
     } else {
