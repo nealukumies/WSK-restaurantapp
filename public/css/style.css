@@ -165,7 +165,8 @@ h2 {
 
 .register,
 .login,
-.details {
+.details,
+.profile {
   display: flex;
   justify-self: center;
   margin-top: 20px;
