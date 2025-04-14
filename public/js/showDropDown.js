@@ -23,7 +23,7 @@ export async function showDropdown({
     dropdownContent.appendChild(allLi);
 
     for (const item of items) {
-      if (!item.toLowerCase().startsWith(filter.toLowerCase())) continue;
+      if (!item.toLowerCase().includes(filter.toLowerCase())) continue;
 
       const li = document.createElement('li');
       li.innerHTML = item;
