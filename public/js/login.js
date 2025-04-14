@@ -16,16 +16,20 @@ loginForm.addEventListener('submit', async (event) => {
     if (response.ok) {
       const result = await response.json();
 
+      console.log('Login result:', result);
       alert(
         'Logged in as: ' + result.user.username + ' (' + result.user.role + ')'
       );
+      localStorage.setItem('token', result.token);
 
-      window.location.href = 'index.html';
+      window.location.href = '/index.html';
     } else {
-      const error = await response.json();
+      // If the response is not ok, throw an error
+      const error = await response.json(); // Assuming error details are in JSON format
       throw new Error(error.message || 'Login failed');
     }
   } catch (error) {
+    // Catch any errors thrown by the try block, including those from failed responses
     console.error('Error:', error);
     alert(`Käyttäjänimi tai salasana väärin!`);
   }
