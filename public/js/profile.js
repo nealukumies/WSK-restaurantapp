@@ -1,7 +1,9 @@
 import {fetchUserDetails} from './fetchUserDetails';
 
-const userData = await fetchUserDetails;
-
+const userData = await fetchUserDetails();
+if (!userData) {
+  console.error('User data not found');
+}
 const profileContainer = document.querySelector('.profile');
 const h2 = document.createElement('h2');
 h2.innerHTML = 'Oma profiili';

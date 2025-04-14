@@ -7,16 +7,18 @@ import {fetchUserDetails} from './fetchUserDetails.js';
 async function init() {
   try {
     document.addEventListener('DOMContentLoaded', async () => {
-      const user = await fetchUserDetails();
+      const token = localStorage.getItem('token');
 
-      if (user) {
+      if (token) {
         document.getElementById('register-link').style.display = 'none';
         document.getElementById('login-link').style.display = 'none';
         document.getElementById('profile-link').style.display = 'inline-block';
         document.getElementById('logout-link').style.display = 'inline-block';
 
+        fetchUserDetails(token);
+
         document.getElementById('logout-link').addEventListener('click', () => {
-          document.cookie = 'token=; Max-Age=0; path=/;';
+          localStorage.removeItem('token');
           window.location.reload();
         });
       } else {

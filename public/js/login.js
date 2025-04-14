@@ -9,7 +9,6 @@ loginForm.addEventListener('submit', async (event) => {
     headers: {
       'Content-Type': 'application/json',
     },
-    credentials: 'include',
     body: JSON.stringify({username, password}),
   });
   try {
@@ -21,15 +20,14 @@ loginForm.addEventListener('submit', async (event) => {
         'Logged in as: ' + result.user.username + ' (' + result.user.role + ')'
       );
       localStorage.setItem('token', result.token);
+      console.log('Token saved to localStorage:', result.token);
 
-      window.location.href = '/index.html';
+      window.location.href = 'index.html';
     } else {
-      // If the response is not ok, throw an error
-      const error = await response.json(); // Assuming error details are in JSON format
+      const error = await response.json();
       throw new Error(error.message || 'Login failed');
     }
   } catch (error) {
-    // Catch any errors thrown by the try block, including those from failed responses
     console.error('Error:', error);
     alert(`Käyttäjänimi tai salasana väärin!`);
   }
