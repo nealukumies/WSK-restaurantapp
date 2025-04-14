@@ -1,19 +1,11 @@
-export async function fetchUserDetails(token) {
-  fetch('http://localhost:3000/api/v1/auth/me', {
-    method: 'GET',
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.user) {
-        document.getElementById(
-          'profile-link'
-        ).innerText = `Profiili (${data.user.name})`;
-      }
-    })
-    .catch((error) => {
-      console.error('Error fetching user data:', error);
-    });
+export async function fetchUserDetails() {
+  const response = await fetch('http://localhost:3000/api/v1/auth/me', {
+    credentials: 'include',
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    console.log('User:', data.user);
+    return data.user;
+  } else return null;
 }

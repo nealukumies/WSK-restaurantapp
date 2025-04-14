@@ -9,6 +9,7 @@ loginForm.addEventListener('submit', async (event) => {
     headers: {
       'Content-Type': 'application/json',
     },
+    credentials: 'include',
     body: JSON.stringify({username, password}),
   });
   try {
@@ -18,9 +19,8 @@ loginForm.addEventListener('submit', async (event) => {
       alert(
         'Logged in as: ' + result.user.username + ' (' + result.user.role + ')'
       );
-      localStorage.setItem('token', result.token);
 
-      window.location.href = '/index.html';
+      window.location.href = 'index.html';
     } else {
       const error = await response.json();
       throw new Error(error.message || 'Login failed');

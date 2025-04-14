@@ -5,16 +5,12 @@ import {login} from '../models/user-model.js';
 const authUser = async (req, res) => {
   const result = await login(req.body.username);
   if (!result) {
-    res.status(404).json({message: 'User not found'});
-    return;
+    return res.status(404).json({message: 'User not found'});
   }
+
   const passwordValid = bcrypt.compareSync(req.body.password, result.password);
-
-  console.log('password is valid', passwordValid);
-
   if (!passwordValid) {
-    res.sendStatus(401);
-    return;
+    return res.sendStatus(401);
   }
 
   const userWithNoPassword = {
@@ -29,7 +25,14 @@ const authUser = async (req, res) => {
     expiresIn: '24h',
   });
 
-  res.json({user: userWithNoPassword, token});
+  res.cookie('auth_token', token, {
+    httpOnly: true,
+    secure: false,
+    sameSite: 'Lax',
+    maxAge: 24 * 60 * 60 * 1000,
+  });
+
+  res.json({user: userWithNoPassword});
 };
 
 const getMe = async (req, res) => {

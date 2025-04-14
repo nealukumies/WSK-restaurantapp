@@ -6,19 +6,17 @@ import {fetchUserDetails} from './fetchUserDetails.js';
 
 async function init() {
   try {
-    document.addEventListener('DOMContentLoaded', () => {
-      const token = localStorage.getItem('token');
+    document.addEventListener('DOMContentLoaded', async () => {
+      const user = await fetchUserDetails();
 
-      if (token) {
+      if (user) {
         document.getElementById('register-link').style.display = 'none';
         document.getElementById('login-link').style.display = 'none';
         document.getElementById('profile-link').style.display = 'inline-block';
         document.getElementById('logout-link').style.display = 'inline-block';
 
-        fetchUserDetails(token);
-
         document.getElementById('logout-link').addEventListener('click', () => {
-          localStorage.removeItem('token');
+          document.cookie = 'token=; Max-Age=0; path=/;';
           window.location.reload();
         });
       } else {
