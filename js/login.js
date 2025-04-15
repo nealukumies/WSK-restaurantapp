@@ -27,7 +27,7 @@ loginForm.addEventListener('submit', async (event) => {
       const user = await getUserDetails(result.token);
       console.log('User details:', user);
 
-      window.location.href = 'index.html';
+      window.location.href = 'profile.html';
     } else {
       const error = await response.json();
       throw new Error(error.message || 'Login failed');
