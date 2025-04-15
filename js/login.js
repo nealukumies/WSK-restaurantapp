@@ -21,7 +21,6 @@ loginForm.addEventListener('submit', async (event) => {
       const result = await response.json();
 
       console.log('Login result:', result);
-      alert('Logged in as: ' + result.data.username);
       localStorage.setItem('token', result.token);
       console.log('Token saved to localStorage:', result.token);
       const user = await getUserDetails(result.token);

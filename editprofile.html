@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TastEDU</title>
-    <script src="js/register.js" type="module" defer></script>
+    <script src="js/editProfile.js" type="module" defer></script>
     <link rel="stylesheet" href="css/style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
@@ -31,16 +31,15 @@
         <h1>TastEDU: opiskelijaravintolat</h1>
       </div>
     </div>
-
-    <div class="register">
+    <div class="edit-profile">
+      <h2>Muokkaa profiilia</h2>
       <form>
         <label for="username">Nimi:</label>
         <input type="text" id="username" name="username" />
         <label for="email">Sähköposti:</label>
         <input type="email" id="email" name="email" />
-        <label for="password">Salasana:</label>
-        <input type="password" id="password" name="password" />
-        <button type="submit">Rekisteröidy</button>
+
+        <button type="submit" id="edit-button">Tallenna</button>
       </form>
     </div>
   </body>

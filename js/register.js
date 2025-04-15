@@ -4,29 +4,32 @@ form.addEventListener('submit', async function (event) {
 
   const formData = new FormData(form);
   const data = {
-    name: formData.get('name'),
     username: formData.get('username'),
     email: formData.get('email'),
     password: formData.get('password'),
   };
 
   try {
-    const response = await fetch('http://localhost:3000/api/v1/auth/register', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    });
+    const response = await fetch(
+      'https://media2.edu.metropolia.fi/restaurant/api/v1/users',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      }
+    );
 
     const result = await response.json();
 
     if (response.ok) {
-      alert(result.message + ' ID: ' + result.result.user_id);
+      window.location.href = 'login.html';
     } else {
-      alert('Error: ' + result.message);
+      alert('Käyttäjätunnus tai sähköposti on jo käytössä!');
+      console.log('Error: ' + result.message);
     }
   } catch (error) {
-    alert('Error: ' + error.message);
+    console.log('Error: ' + error.message);
   }
 });
