@@ -55,6 +55,6 @@ export async function renderWeekly(restaurant) {
       dialog.appendChild(closeButton);
     }
   } catch (error) {
-    console.log('Error fetching menu');
+    console.log('Error fetching menu: ' + error.message);
   }
 }

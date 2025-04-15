@@ -1,5 +1,7 @@
 import {getUserDetails} from './getUserDetails.js';
+import {renderNavBar} from './renderNavBar.js';
 
+renderNavBar();
 const token = localStorage.getItem('token');
 const userData = await getUserDetails(token);
 if (!userData) {
@@ -12,4 +14,5 @@ const username = document.createElement('p');
 const email = document.createElement('p');
 username.innerHTML = 'Käyttäjätunnus: ' + userData.username;
 email.innerHTML = 'Sähköposti: ' + userData.email;
+
 profileContainer.append(h2, username, email);
