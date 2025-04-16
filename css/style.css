@@ -2,7 +2,7 @@ html {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   display: flex;
   justify-content: center;
-  color: #2c3d73;
+  color: #2e2e2e;
 }
 
 body {
@@ -38,7 +38,7 @@ header a {
   font-size: medium;
   font-weight: bold;
   background-color: #f15b42;
-  color: #2c3d73;
+  color: #2e2e2e;
   padding: 5px 25px;
   border-radius: 5px;
   margin: 5px;
@@ -69,6 +69,8 @@ button:hover {
 
 h1,
 h2 {
+  color: #2c3d73;
+  font-weight: bold;
   margin: 0;
   font-weight: normal;
   padding: 5px;
@@ -129,7 +131,7 @@ h2 {
   margin-left: 5px;
   padding: 8px;
   background-color: #ffd372;
-  color: #2c3d73;
+  color: #2e2e2e;
 }
 
 .restaurant-container {
@@ -151,7 +153,7 @@ h2 {
 }
 
 .restaurant button {
-  color: #2c3d73;
+  color: #2e2e2e;
   text-decoration: none;
   font-size: small;
   font-weight: bold;
@@ -190,13 +192,11 @@ form {
 
 ::file-selector-button {
   background-color: #f15b42;
-  color: #2c3d73;
+  color: #2e2e2e;
   text-decoration: none;
   font-size: small;
   font-weight: bold;
-  display: flex;
-  flex-direction: column;
-  padding: 5px;
+  padding: 10px;
   margin-top: 5px;
   margin-bottom: 5px;
   border-radius: 5px;
@@ -221,7 +221,7 @@ input {
 button {
   padding: 10px;
   background-color: #f15b42;
-  color: #2c3d73;
+  color: #2e2e2e;
   border-radius: 5px;
   border-style: none;
 }
@@ -273,7 +273,7 @@ dialog button {
 }
 
 table {
-  color: #2c3d73;
+  color: #2e2e2e;
   border-radius: 5px;
   margin-bottom: 20px;
 }
