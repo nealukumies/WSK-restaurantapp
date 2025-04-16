@@ -58,7 +58,17 @@ editButton.addEventListener('click', () => {
   window.location.href = 'editprofile.html';
 });
 
+const uploadButton = document.createElement('button');
+if (userData.avatar) {
+  uploadButton.innerHTML = 'Päivitä kuva';
+} else {
+  uploadButton.innerHTML = 'Lisää kuva';
+}
+uploadButton.addEventListener('click', () => {
+  window.location.href = 'upload.html';
+});
+
 imageContainer.appendChild(avatar);
-profileDetails.append(username, email, deleteButton, editButton);
+profileDetails.append(username, email, deleteButton, editButton, uploadButton);
 profileCard.append(imageContainer, profileDetails);
 profileContainer.appendChild(profileCard);
