@@ -14,7 +14,7 @@ export function renderNavBar() {
 
       document.getElementById('logout-link').addEventListener('click', () => {
         localStorage.removeItem('token');
-        window.location.reload();
+        window.location.href = 'index.html';
       });
     } else {
       document.getElementById('register-link').style.display = 'inline-block';

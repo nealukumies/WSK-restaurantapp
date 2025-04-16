@@ -36,6 +36,7 @@ header a {
   display: block;
   text-align: center;
   font-size: medium;
+  font-weight: bold;
   background-color: #f15b42;
   color: #2c3d73;
   padding: 5px 25px;
@@ -84,6 +85,7 @@ h2 {
 
 .filter button {
   margin-left: 5px;
+  font-weight: bold;
 }
 
 .dropdown {
@@ -152,6 +154,7 @@ h2 {
   color: #2c3d73;
   text-decoration: none;
   font-size: small;
+  font-weight: bold;
   display: flex;
   flex-direction: column;
   padding: 5px;
@@ -185,6 +188,27 @@ form {
   gap: 10px;
 }
 
+::file-selector-button {
+  background-color: #f15b42;
+  color: #2c3d73;
+  text-decoration: none;
+  font-size: small;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  border-style: none;
+}
+
+::file-selector-button:hover {
+  background-color: #2c3d73;
+  color: #f15b42;
+}
+
+.register button,
 .details img {
   border-radius: 5px;
 }

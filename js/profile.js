@@ -14,6 +14,10 @@ const username = document.createElement('p');
 const email = document.createElement('p');
 username.innerHTML = 'Käyttäjätunnus: ' + userData.username;
 email.innerHTML = 'Sähköposti: ' + userData.email;
+const avatar = document.createElement('img');
+avatar.src = `https://media2.edu.metropolia.fi/restaurant/uploads/${userData.avatar}`;
+avatar.alt = 'Käyttäjän kuva';
+avatar.style.width = '100px';
 
 const deleteButton = document.createElement('button');
 deleteButton.innerHTML = 'Poista tili';
@@ -43,4 +47,4 @@ editButton.addEventListener('click', () => {
   window.location.href = 'editprofile.html';
 });
 
-profileContainer.append(h2, username, email, deleteButton, editButton);
+profileContainer.append(h2, username, email, avatar, deleteButton, editButton);

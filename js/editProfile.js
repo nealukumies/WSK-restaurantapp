@@ -38,33 +38,38 @@ deleteButton.addEventListener('click', async () => {
 const editButton = document.getElementById('edit-button');
 editButton.addEventListener('click', async (event) => {
   event.preventDefault();
+
   const updatedUsername = username.value;
   const updatedEmail = email.value;
-  console.log('Updating user data:', {
-    username: updatedUsername,
-    email: updatedEmail,
-  });
+  const avatarFile = document.getElementById('avatar').files[0];
 
-  const response = await fetch(
-    'https://media2.edu.metropolia.fi/restaurant/api/v1/users/',
-    {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer: ${token}`,
-      },
-      body: JSON.stringify({
-        username: updatedUsername,
-        email: updatedEmail,
-      }),
+  const formData = new FormData();
+  formData.append('username', updatedUsername);
+  formData.append('email', updatedEmail);
+  if (avatarFile) {
+    formData.append('avatar', avatarFile);
+  }
+
+  try {
+    const response = await fetch(
+      'https://media2.edu.metropolia.fi/restaurant/api/v1/users/',
+      {
+        method: 'PUT',
+        headers: {
+          Authorization: `Bearer: ${token}`,
+        },
+        body: formData,
+      }
+    );
+    if (response.ok) {
+      alert('Käyttäjätiedot päivitetty onnistuneesti!');
+      window.location.href = 'profile.html';
+    } else {
+      alert('Virhe käyttäjätietojen päivittämisessä.');
     }
-  );
-  console.log(response);
-  if (response.ok) {
-    alert('Käyttäjätiedot päivitetty onnistuneesti!');
-    window.location.href = 'profile.html';
-  } else {
-    alert('Virhe käyttäjätietojen päivittämisessä.');
+  } catch (error) {
+    console.error('Error during update:', error);
+    alert('Jotain meni pieleen. Yritä uudelleen.');
   }
 });
 
