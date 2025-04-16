@@ -10,14 +10,25 @@ if (!userData) {
 const profileContainer = document.querySelector('.profile');
 const h2 = document.createElement('h2');
 h2.innerHTML = 'Oma profiili';
+profileContainer.append(h2);
+
+const profileCard = document.createElement('div');
+profileCard.setAttribute('class', 'profile-card');
+
+const profileDetails = document.createElement('div');
+profileDetails.setAttribute('class', 'profile-details');
 const username = document.createElement('p');
 const email = document.createElement('p');
 username.innerHTML = 'Käyttäjätunnus: ' + userData.username;
 email.innerHTML = 'Sähköposti: ' + userData.email;
+const imageContainer = document.createElement('div');
+imageContainer.setAttribute('class', 'profile-image');
 const avatar = document.createElement('img');
-avatar.src = `https://media2.edu.metropolia.fi/restaurant/uploads/${userData.avatar}`;
+avatar.src = userData.avatar
+  ? `https://media2.edu.metropolia.fi/restaurant/uploads/${userData.avatar}`
+  : 'https://placehold.co/100?text=No+image+available';
 avatar.alt = 'Käyttäjän kuva';
-avatar.style.width = '100px';
+avatar.style.width = '200px';
 
 const deleteButton = document.createElement('button');
 deleteButton.innerHTML = 'Poista tili';
@@ -47,4 +58,7 @@ editButton.addEventListener('click', () => {
   window.location.href = 'editprofile.html';
 });
 
-profileContainer.append(h2, username, email, avatar, deleteButton, editButton);
+imageContainer.appendChild(avatar);
+profileDetails.append(username, email, deleteButton, editButton);
+profileCard.append(imageContainer, profileDetails);
+profileContainer.appendChild(profileCard);

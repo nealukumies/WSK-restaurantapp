@@ -61,6 +61,8 @@ editButton.addEventListener('click', async (event) => {
         body: formData,
       }
     );
+    console.log('formdata: ', formData);
+    console.log('response: ', response);
     if (response.ok) {
       alert('Käyttäjätiedot päivitetty onnistuneesti!');
       window.location.href = 'profile.html';

@@ -72,8 +72,8 @@ h2 {
   color: #2c3d73;
   font-weight: bold;
   margin: 0;
-  font-weight: normal;
   padding: 5px;
+  text-align: center;
 }
 
 .filter {
@@ -184,6 +184,17 @@ h2 {
   gap: 10px;
 }
 
+.profile-card {
+  display: flex;
+  padding: 20px;
+}
+
+.profile-details,
+.profile-image {
+  padding: 20px;
+  border-radius: 5px;
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -219,7 +230,10 @@ input {
 }
 
 button {
+  margin-right: 10px;
+  margin-top: 10px;
   padding: 10px;
+  font-weight: bold;
   background-color: #f15b42;
   color: #2e2e2e;
   border-radius: 5px;
