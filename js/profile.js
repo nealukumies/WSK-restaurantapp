@@ -1,5 +1,7 @@
+import {getRestaurantById} from './getRestaurantById.js';
 import {getUserDetails} from './getUserDetails.js';
 import {renderNavBar} from './renderNavBar.js';
+import {viewRestaurantList} from './viewRestaurantList.js';
 
 renderNavBar();
 const token = localStorage.getItem('token');
@@ -22,9 +24,21 @@ const email = document.createElement('p');
 username.innerHTML = 'Käyttäjätunnus: ' + userData.username;
 email.innerHTML = 'Sähköposti: ' + userData.email;
 const favoriteRestaurant = document.createElement('p');
-favoriteRestaurant.innerHTML =
-  'Suosikkiravintola: ' +
-  (userData.favoriteRestaurant ? userData.favoriteRestaurant : 'Ei valittuna');
+if (userData.favouriteRestaurant) {
+  const restaurant = await getRestaurantById(userData.favouriteRestaurant);
+  console.log('Favorite restaurant:', restaurant);
+  const restaurantButton = document.createElement('button');
+  restaurantButton.innerHTML = restaurant.name;
+  restaurantButton.addEventListener('click', () => {
+    console.log('Clicked restaurant button');
+    viewRestaurantList([restaurant]);
+    //TÄMÄ EI TOIMI FIKSAA TÄMÄ!!!!
+  });
+  favoriteRestaurant.innerHTML = 'Suosikkiravintola: ';
+  favoriteRestaurant.appendChild(restaurantButton);
+} else {
+  favoriteRestaurant.innerHTML = 'Suosikkiravintola: Ei valittuna';
+}
 
 const imageContainer = document.createElement('div');
 imageContainer.setAttribute('class', 'profile-image');

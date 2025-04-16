@@ -3,8 +3,11 @@ import {viewRestaurantMap} from './viewRestaurantMap.js';
 import {viewRestaurantList} from './viewRestaurantList.js';
 import {showDropdown} from './showDropDown.js';
 import {renderNavBar} from './renderNavBar.js';
+import {getUserDetails} from './getUserDetails.js';
+import {getRestaurantById} from './getRestaurantById.js';
 
 async function init() {
+  const token = localStorage.getItem('token');
   try {
     renderNavBar();
 
@@ -13,6 +16,24 @@ async function init() {
       restaurants.sort((a, b) => a.name.localeCompare(b.name));
       viewRestaurantList(restaurants);
 
+      if (token) {
+        const user = await getUserDetails(token);
+        if (!user) {
+          console.error('User data not found');
+        }
+        const favoriteButton = document.createElement('button');
+        const favoriteRestaurant = await getRestaurantById(
+          user.favouriteRestaurant
+        );
+        console.log('Favorite restaurant', favoriteRestaurant);
+        favoriteButton.innerHTML = favoriteRestaurant.name;
+        const filterBar = document.querySelector('.filter');
+        favoriteButton.addEventListener('click', () => {
+          console.log('Clicked favorite restaurant button');
+          viewRestaurantList([favoriteRestaurant]);
+        });
+        filterBar.prepend(favoriteButton);
+      }
       const listButton = document.querySelector('.list-button');
       listButton.addEventListener('click', () =>
         viewRestaurantList(restaurants)

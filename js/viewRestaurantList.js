@@ -1,8 +1,15 @@
+import {getUserDetails} from './getUserDetails.js';
 import {renderDaily} from './renderDaily.js';
 import {renderWeekly} from './renderWeekly.js';
 import {showMap} from './showMap.js';
+import {updateUser} from './updateUser.js';
 
-export function viewRestaurantList(restaurants) {
+export async function viewRestaurantList(restaurants) {
+  const token = localStorage.getItem('token');
+  let user = null;
+  if (token) {
+    user = await getUserDetails(token);
+  }
   const container = document.querySelector('.container');
   container.classList.remove('show-map');
   container.classList.add('show-list');
@@ -53,8 +60,46 @@ export function viewRestaurantList(restaurants) {
     const weeklyA = document.createElement('button');
     weeklyA.innerHTML = 'Viikon ruokalista';
     weeklyA.addEventListener('click', () => renderWeekly(restaurant));
+    let favorite;
+    if (user.favouriteRestaurant === restaurant._id) {
+      favorite = document.createElement('p');
+      favorite.setAttribute('class', 'favorite-p');
+      favorite.textContent = '⭐ Suosikki ⭐';
+    } else {
+      favorite = document.createElement('button');
+      favorite.innerHTML = 'Lisää suosikkeihin';
+
+      favorite.addEventListener('click', async () => {
+        console.log('Restaurant id:', restaurant._id);
+        // const response = await fetch(
+        //   'https://media2.edu.metropolia.fi/restaurant/api/v1/users/',
+        //   {
+        //     method: 'PUT',
+        //     headers: {
+        //       'Content-Type': 'application/json',
+        //       Authorization: `Bearer: ${token}`,
+        //     },
+        //     body: JSON.stringify({
+        //       favoriteRestaurant: restaurant._id,
+        //     }),
+        //   }
+        // );
+        const response = await updateUser({
+          favouriteRestaurant: restaurant._id,
+        });
+        if (response) {
+          console.log('Favorite restaurant added:', response);
+          alert('Ravintola lisätty suosikkeihin!');
+          window.location.reload();
+        }
+      });
+    }
 
     restaurantDiv.append(img, h2, locationA, dailyA, weeklyA);
+
+    if (user) {
+      restaurantDiv.appendChild(favorite);
+    }
     restContainer.appendChild(restaurantDiv);
   }
 }

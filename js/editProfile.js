@@ -1,5 +1,6 @@
 import {getUserDetails} from './getUserDetails.js';
 import {renderNavBar} from './renderNavBar.js';
+import {updateUser} from './updateUser.js';
 
 renderNavBar();
 const token = localStorage.getItem('token');
@@ -40,27 +41,15 @@ editButton.addEventListener('click', async (event) => {
   event.preventDefault();
   const updatedUsername = username.value;
   const updatedEmail = email.value;
-  console.log('Updating user data:', {
+  const user = {
     username: updatedUsername,
     email: updatedEmail,
-  });
+  };
+  console.log('Updating user data:', user);
 
-  const response = await fetch(
-    'https://media2.edu.metropolia.fi/restaurant/api/v1/users/',
-    {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer: ${token}`,
-      },
-      body: JSON.stringify({
-        username: updatedUsername,
-        email: updatedEmail,
-      }),
-    }
-  );
+  const response = await updateUser(user);
   console.log(response);
-  if (response.ok) {
+  if (response) {
     alert('Käyttäjätiedot päivitetty onnistuneesti!');
     window.location.href = 'profile.html';
   } else {
