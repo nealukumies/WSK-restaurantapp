@@ -21,6 +21,11 @@ const username = document.createElement('p');
 const email = document.createElement('p');
 username.innerHTML = 'Käyttäjätunnus: ' + userData.username;
 email.innerHTML = 'Sähköposti: ' + userData.email;
+const favoriteRestaurant = document.createElement('p');
+favoriteRestaurant.innerHTML =
+  'Suosikkiravintola: ' +
+  (userData.favoriteRestaurant ? userData.favoriteRestaurant : 'Ei valittuna');
+
 const imageContainer = document.createElement('div');
 imageContainer.setAttribute('class', 'profile-image');
 const avatar = document.createElement('img');
@@ -69,6 +74,13 @@ uploadButton.addEventListener('click', () => {
 });
 
 imageContainer.appendChild(avatar);
-profileDetails.append(username, email, deleteButton, editButton, uploadButton);
+profileDetails.append(
+  username,
+  email,
+  favoriteRestaurant,
+  deleteButton,
+  editButton,
+  uploadButton
+);
 profileCard.append(imageContainer, profileDetails);
 profileContainer.appendChild(profileCard);

@@ -191,8 +191,15 @@ h2 {
 
 .profile-details,
 .profile-image {
+  display: flex;
+  flex-direction: column;
   padding: 20px;
   border-radius: 5px;
+}
+
+.profile-details p {
+  margin: 0;
+  padding: 5px;
 }
 
 form {
