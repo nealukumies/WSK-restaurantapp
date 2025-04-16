@@ -315,6 +315,17 @@ td {
   body {
     font-size: small;
   }
+
+  .filter {
+    flex-direction: column;
+    align-items: center;
+  }
+  .city-input,
+  .company-input,
+  .name-input {
+    margin-top: 10px;
+  }
+
   .show-list .restaurant-container {
     display: flex;
     flex-direction: column;
