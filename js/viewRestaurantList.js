@@ -28,7 +28,10 @@ export async function viewRestaurantList(restaurants) {
     './img/food9.jpg',
     './img/food10.jpg',
   ];
-
+  if (!restContainer) {
+    console.error('No .restaurant-container found in the DOM');
+    return;
+  }
   for (let i = 0; i < restaurants.length; i++) {
     const restaurant = restaurants[i];
 
@@ -71,19 +74,6 @@ export async function viewRestaurantList(restaurants) {
 
       favorite.addEventListener('click', async () => {
         console.log('Restaurant id:', restaurant._id);
-        // const response = await fetch(
-        //   'https://media2.edu.metropolia.fi/restaurant/api/v1/users/',
-        //   {
-        //     method: 'PUT',
-        //     headers: {
-        //       'Content-Type': 'application/json',
-        //       Authorization: `Bearer: ${token}`,
-        //     },
-        //     body: JSON.stringify({
-        //       favoriteRestaurant: restaurant._id,
-        //     }),
-        //   }
-        // );
         const response = await updateUser({
           favouriteRestaurant: restaurant._id,
         });

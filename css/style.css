@@ -306,6 +306,8 @@ dialog button {
 }
 
 table {
+  width: 100%;
+
   color: #2e2e2e;
   border-radius: 5px;
   margin-bottom: 20px;
