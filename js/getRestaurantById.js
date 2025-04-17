@@ -6,6 +6,6 @@ export async function getRestaurantById(id) {
     const jsonData = await response.json();
     return jsonData;
   } catch (error) {
-    console.log('Failed to get restaurant: ' + error.message);
+    console.error('Failed to get restaurant: ' + error.message);
   }
 }

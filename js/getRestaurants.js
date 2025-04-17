@@ -6,6 +6,6 @@ export async function getRestaurants() {
     const jsonData = await response.json();
     return jsonData;
   } catch (error) {
-    console.log('Failed to get restaurants: ' + error.message);
+    console.error('Failed to get restaurants: ' + error.message);
   }
 }
