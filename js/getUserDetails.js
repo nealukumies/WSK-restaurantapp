@@ -11,7 +11,6 @@ export async function getUserDetails(token) {
       }
     );
     const jsonData = await response.json();
-    console.log(jsonData);
     return jsonData;
   } catch (error) {
     console.log('Failed to get user details ' + error.message);

@@ -60,10 +60,7 @@ editButton.addEventListener('click', async (event) => {
     username: updatedUsername,
     email: updatedEmail,
   };
-  console.log('Updating user data:', user);
-
   const response = await updateUser(user);
-  console.log(response);
   if (response) {
     alert('Käyttäjätiedot päivitetty onnistuneesti!');
     window.location.href = 'profile.html';

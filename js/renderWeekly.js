@@ -6,7 +6,6 @@ export async function renderWeekly(restaurant) {
   dialog.showModal();
   try {
     const days = await getWeekly(restaurant._id, 'fi');
-    console.log(days);
     if (days.length > 0) {
       for (const day of days) {
         const h2 = document.createElement('h2');
@@ -68,6 +67,6 @@ export async function renderWeekly(restaurant) {
       dialog.appendChild(closeButton);
     }
   } catch (error) {
-    console.log('Error fetching menu: ' + error.message);
+    console.error('Error fetching menu: ' + error.message);
   }
 }

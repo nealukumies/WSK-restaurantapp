@@ -11,7 +11,6 @@ export async function updateUser(user) {
       body: JSON.stringify(user),
     }
   );
-  console.log('Response status:', response.status);
   if (response.ok) {
     return response.json();
   } else {

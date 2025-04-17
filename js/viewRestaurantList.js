@@ -79,7 +79,6 @@ export async function viewRestaurantList(restaurants) {
           favouriteRestaurant: restaurant._id,
         });
         if (response) {
-          console.log('Favorite restaurant added:', response);
           alert('Ravintola lisätty suosikkeihin!');
           window.location.reload();
         }

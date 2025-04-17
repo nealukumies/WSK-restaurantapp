@@ -23,11 +23,9 @@ async function init() {
           const favoriteRestaurant = await getRestaurantById(
             user.favouriteRestaurant
           );
-          console.log('Favorite restaurant', favoriteRestaurant);
           favoriteButton.innerHTML = favoriteRestaurant.name;
           const filterBar = document.querySelector('.filter');
           favoriteButton.addEventListener('click', () => {
-            console.log('Clicked favorite restaurant button');
             viewRestaurantList([favoriteRestaurant]);
           });
           filterBar.prepend(favoriteButton);

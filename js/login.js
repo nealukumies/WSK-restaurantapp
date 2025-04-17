@@ -1,5 +1,3 @@
-import {getUserDetails} from './getUserDetails.js';
-
 const loginForm = document.getElementById('login-form');
 loginForm.addEventListener('submit', async (event) => {
   event.preventDefault();
@@ -19,13 +17,7 @@ loginForm.addEventListener('submit', async (event) => {
   try {
     if (response.ok) {
       const result = await response.json();
-
-      console.log('Login result:', result);
       localStorage.setItem('token', result.token);
-      console.log('Token saved to localStorage:', result.token);
-      const user = await getUserDetails(result.token);
-      console.log('User details:', user);
-
       window.location.href = 'profile.html';
     } else {
       const error = await response.json();
