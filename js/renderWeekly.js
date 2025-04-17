@@ -21,11 +21,9 @@ export async function renderWeekly(restaurant) {
               <th>Hinta</th>
               </tr>
             </thead>
-            <tbody>
-            </tbody>
             `;
-          const tbody = menuTable.querySelector('tbody');
           console.log(day.courses);
+          const tbody = document.createElement('tbody');
           for (const course of day.courses) {
             const row = document.createElement('tr');
             const coursetd = document.createElement('td');
@@ -41,9 +39,13 @@ export async function renderWeekly(restaurant) {
             row.append(coursetd, pricetd);
             tbody.appendChild(row);
           }
+          menuTable.appendChild(tbody);
         } else {
-          menuTable.innerHTML = 'Ei ruokalistaa tälle päivälle.';
+          const noMenu = document.createElement('p');
+          noMenu.textContent = 'Ei ruokalistaa tälle päivälle.';
+          dialog.appendChild(noMenu);
         }
+
         dialog.appendChild(menuTable);
       }
       const closeButton = document.createElement('button');
@@ -53,8 +55,19 @@ export async function renderWeekly(restaurant) {
         dialog.close();
       });
       dialog.appendChild(closeButton);
+    } else {
+      const noMenu = document.createElement('p');
+      noMenu.textContent = 'Ei ruokalistaa saatavilla.';
+      dialog.appendChild(noMenu);
+      const closeButton = document.createElement('button');
+      closeButton.setAttribute('class', 'close-btn');
+      closeButton.innerHTML = 'Close';
+      closeButton.addEventListener('click', () => {
+        dialog.close();
+      });
+      dialog.appendChild(closeButton);
     }
   } catch (error) {
-    console.log('Error fetching menu');
+    console.log('Error fetching menu: ' + error.message);
   }
 }

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TastEDU</title>
-    <script src="js/main.js" defer></script>
+    <script src="js/login.js" type="module" defer></script>
     <link rel="stylesheet" href="css/style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
@@ -15,8 +15,12 @@
       <header>
         <nav>
           <a href="index.html">Koti</a>
-          <a href="register.html">Rekisteröidy</a>
-          <a href="login.html">Kirjaudu sisään</a>
+          <a href="register.html" id="register-link">Rekisteröidy</a>
+          <a href="login.html" id="login-link">Kirjaudu sisään</a>
+          <a href="profile.html" id="profile-link" style="display: none"
+            >Profiili</a
+          >
+          <a href="#" id="logout-link" style="display: none">Kirjaudu ulos</a>
         </nav>
         <div class="logo">
           <img src="img/logo.jpg" alt="Logo" />
@@ -29,11 +33,21 @@
     </div>
 
     <div class="login">
-      <form>
-        <label for="email">Sähköposti:</label>
-        <input type="email" id="email" name="email" />
+      <form id="login-form">
+        <label for="username">Käyttäjänimi:</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          autocomplete="username"
+        />
         <label for="password">Salasana:</label>
-        <input type="password" id="password" name="password" />
+        <input
+          type="password"
+          id="password"
+          name="password"
+          autocomplete="current-password"
+        />
         <button type="submit">Lähetä</button>
       </form>
     </div>

@@ -1,9 +1,11 @@
+import {getUserDetails} from './getUserDetails.js';
 import {renderDaily} from './renderDaily.js';
 import {renderWeekly} from './renderWeekly.js';
+import {updateUser} from './updateUser.js';
 
 let mainmap;
 
-export function viewRestaurantMap(restaurants) {
+export async function viewRestaurantMap(restaurants) {
   const container = document.querySelector('.container');
   container.classList.remove('show-list');
   container.classList.add('show-map');
@@ -36,6 +38,8 @@ export function viewRestaurantMap(restaurants) {
   }).addTo(mainmap);
 
   navigator.geolocation.getCurrentPosition(success, error, options);
+  const token = localStorage.getItem('token');
+  const user = token ? await getUserDetails(token) : null;
 
   for (const restaurant of restaurants) {
     const coords = [
@@ -47,6 +51,8 @@ export function viewRestaurantMap(restaurants) {
     const popupContent = document.createElement('div');
     popupContent.setAttribute('class', 'pop-up');
     popupContent.innerHTML = `<h3>${restaurant.name}</h3>`;
+    popupContent.innerHTML += `<p>${restaurant.address}</p>`;
+    popupContent.innerHTML += `<p>${restaurant.city}</p>`;
 
     const dailyA = document.createElement('button');
     dailyA.innerHTML = 'Päivän ruokalista';
@@ -57,6 +63,31 @@ export function viewRestaurantMap(restaurants) {
     weeklyA.innerHTML = 'Viikon ruokalista';
     weeklyA.addEventListener('click', () => renderWeekly(restaurant));
     popupContent.appendChild(weeklyA);
+
+    if (user) {
+      let favorite;
+      if (user.favouriteRestaurant === restaurant._id) {
+        favorite = document.createElement('p');
+        favorite.setAttribute('class', 'favorite-p');
+        favorite.textContent = '⭐ Suosikki ⭐';
+      } else {
+        favorite = document.createElement('button');
+        favorite.innerHTML = 'Lisää suosikkeihin';
+
+        favorite.addEventListener('click', async () => {
+          console.log('Restaurant id:', restaurant._id);
+          const response = await updateUser({
+            favouriteRestaurant: restaurant._id,
+          });
+          if (response) {
+            console.log('Favorite restaurant added:', response);
+            alert('Ravintola lisätty suosikkeihin!');
+            window.location.reload();
+          }
+        });
+      }
+      popupContent.appendChild(favorite);
+    }
 
     marker.bindPopup(popupContent);
   }
@@ -74,4 +105,10 @@ function success(pos) {
 
 function error(err) {
   console.warn(`ERROR(${err.code}): ${err.message}`);
+  const fallbackLocation = [60.188222, 24.829696];
+  mainmap.setView(fallbackLocation, 13);
+  L.marker(fallbackLocation)
+    .addTo(mainmap)
+    .bindPopup('Sijaintiasi ei voitu löytää, käytetään oletuspaikkaa.')
+    .openPopup();
 }

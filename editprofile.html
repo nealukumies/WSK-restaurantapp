@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TastEDU</title>
-    <script src="js/register.js" type="module" defer></script>
+    <script src="js/editProfile.js" type="module" defer></script>
     <link rel="stylesheet" href="css/style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
@@ -30,28 +30,27 @@
       <div class="title">
         <h1>TastEDU: opiskelijaravintolat</h1>
       </div>
-    </div>
 
-    <div class="register">
-      <form>
-        <label for="username">Nimi:</label>
-        <input
-          type="text"
-          id="username"
-          name="username"
-          autocomplete="username"
-        />
-        <label for="email">Sähköposti:</label>
-        <input type="email" id="email" name="email" autocomplete="email" />
-        <label for="password">Salasana:</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          autocomplete="new-password"
-        />
-        <button type="submit">Rekisteröidy</button>
-      </form>
+      <div class="edit-profile">
+        <h2>Muokkaa profiilia</h2>
+        <form>
+          <label for="username">Nimi:</label>
+          <input type="text" id="username" name="username" />
+          <label for="email">Sähköposti:</label>
+          <input type="email" id="email" name="email" />
+
+          <button type="submit" id="edit-button">Tallenna</button>
+        </form>
+      </div>
     </div>
+    <div id="confirmModal" class="modal">
+      <div class="modal-content">
+        <p>
+          Oletko varma, että haluat poistaa käyttäjätilisi? Tämä toimenpide on
+          pysyvä.
+        </p>
+        <button id="confirmYes">Kyllä</button>
+        <button id="confirmNo">Ei</button>
+      </div>
   </body>
 </html>
