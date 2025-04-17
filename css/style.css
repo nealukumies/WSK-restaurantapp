@@ -338,9 +338,22 @@ td {
     font-size: small;
   }
 
+  header a {
+    font-size: small;
+  }
+
+  h1,
+  h2 {
+    font-size: small;
+  }
+
   .filter {
     flex-direction: column;
     align-items: center;
+  }
+
+  .filter button {
+    margin-top: 5px;
   }
   .city-input,
   .company-input,
@@ -361,5 +374,12 @@ td {
   .show-map .map-container {
     width: auto;
     height: 200px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  nav {
+    flex-direction: column;
+    align-items: center;
   }
 }

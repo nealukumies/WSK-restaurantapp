@@ -18,9 +18,7 @@ async function init() {
 
       if (token) {
         const user = await getUserDetails(token);
-        if (!user) {
-          console.error('User data not found');
-        } else {
+        if (user && user.favouriteRestaurant) {
           const favoriteButton = document.createElement('button');
           const favoriteRestaurant = await getRestaurantById(
             user.favouriteRestaurant

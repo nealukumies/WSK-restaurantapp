@@ -35,9 +35,19 @@
     <div class="login">
       <form id="login-form">
         <label for="username">Käyttäjänimi:</label>
-        <input type="text" id="username" name="username" />
+        <input
+          type="text"
+          id="username"
+          name="username"
+          autocomplete="username"
+        />
         <label for="password">Salasana:</label>
-        <input type="password" id="password" name="password" />
+        <input
+          type="password"
+          id="password"
+          name="password"
+          autocomplete="current-password"
+        />
         <button type="submit">Lähetä</button>
       </form>
     </div>
