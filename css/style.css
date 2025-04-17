@@ -175,9 +175,9 @@ h2 {
 .edit-profile {
   width: 100%;
   display: flex;
-  justify-self: center;
   margin-top: 20px;
-  padding: 25px 200px 25px 200px;
+  padding: 20px;
+  align-items: center;
   border-radius: 5px;
   background-color: #ffd372;
   box-sizing: border-box;
@@ -206,7 +206,9 @@ h2 {
 
 form {
   display: flex;
+  width: 50%;
   flex-direction: column;
+  justify-content: center;
   gap: 10px;
 }
 
