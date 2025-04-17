@@ -3,10 +3,7 @@ import {getDaily} from './getDaily.js';
 export async function renderDaily(restaurant) {
   const dialog = document.querySelector('dialog');
   dialog.innerHTML = '';
-  const existingMap = document.getElementById('map');
-  if (existingMap) {
-    existingMap.remove();
-  }
+
   dialog.showModal();
   try {
     const menu = await getDaily(restaurant._id, 'fi');

@@ -36,12 +36,20 @@ async function init() {
         }
       }
       const listButton = document.querySelector('.list-button');
-      listButton.addEventListener('click', () =>
-        viewRestaurantList(restaurants)
-      );
+      listButton.addEventListener('click', () => {
+        const filterInputs = document.querySelector('.filter-inputs');
+        if (filterInputs) filterInputs.style.display = 'block';
+        viewRestaurantList(restaurants);
+      });
 
       const mapButton = document.querySelector('.map-button');
-      mapButton.addEventListener('click', () => viewRestaurantMap(restaurants));
+      mapButton.addEventListener('click', () => {
+        const filterInputs = document.querySelector('.filter-inputs');
+        if (filterInputs) filterInputs.style.display = 'none';
+        viewRestaurantMap(restaurants);
+      });
+
+      const filterInputs = document.querySelector('.filter-inputs');
 
       const cityInput = document.querySelector('.city-input');
       cityInput.addEventListener('focus', () => {
@@ -72,6 +80,7 @@ async function init() {
           inputSelector: '.name-input',
         });
       });
+      filterInputs.append(cityInput, companyInput, nameInput);
     } else {
       console.error('Failed to fetch restaurants or invalid data format.');
       const body = document.querySelector('body');

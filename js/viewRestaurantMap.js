@@ -39,7 +39,8 @@ export async function viewRestaurantMap(restaurants) {
 
   navigator.geolocation.getCurrentPosition(success, error, options);
   const token = localStorage.getItem('token');
-  const user = await getUserDetails(token);
+  const user = token ? await getUserDetails(token) : null;
+
   for (const restaurant of restaurants) {
     const coords = [
       restaurant.location.coordinates[1],
@@ -63,29 +64,30 @@ export async function viewRestaurantMap(restaurants) {
     weeklyA.addEventListener('click', () => renderWeekly(restaurant));
     popupContent.appendChild(weeklyA);
 
-    let favorite;
+    if (user) {
+      let favorite;
+      if (user.favouriteRestaurant === restaurant._id) {
+        favorite = document.createElement('p');
+        favorite.setAttribute('class', 'favorite-p');
+        favorite.textContent = '⭐ Suosikki ⭐';
+      } else {
+        favorite = document.createElement('button');
+        favorite.innerHTML = 'Lisää suosikkeihin';
 
-    if (user && user.favouriteRestaurant === restaurant._id) {
-      favorite = document.createElement('p');
-      favorite.setAttribute('class', 'favorite-p');
-      favorite.textContent = '⭐ Suosikki ⭐';
-    } else {
-      favorite = document.createElement('button');
-      favorite.innerHTML = 'Lisää suosikkeihin';
-
-      favorite.addEventListener('click', async () => {
-        console.log('Restaurant id:', restaurant._id);
-        const response = await updateUser({
-          favouriteRestaurant: restaurant._id,
+        favorite.addEventListener('click', async () => {
+          console.log('Restaurant id:', restaurant._id);
+          const response = await updateUser({
+            favouriteRestaurant: restaurant._id,
+          });
+          if (response) {
+            console.log('Favorite restaurant added:', response);
+            alert('Ravintola lisätty suosikkeihin!');
+            window.location.reload();
+          }
         });
-        if (response) {
-          console.log('Favorite restaurant added:', response);
-          alert('Ravintola lisätty suosikkeihin!');
-          window.location.reload();
-        }
-      });
+      }
+      popupContent.appendChild(favorite);
     }
-    popupContent.appendChild(favorite);
 
     marker.bindPopup(popupContent);
   }
