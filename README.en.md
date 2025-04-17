@@ -1,6 +1,6 @@
 # TastEDU – Student Restaurant App
 
-📄 Tämä dokumentaatio on saatavilla myös [suomeksi](../README.md).
+📄 Tämä dokumentaatio on saatavilla myös [suomeksi](README.md).
 
 This app was developed as part of an individual assignment for the _Web Application Development_ course.
 
