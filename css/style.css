@@ -15,7 +15,6 @@ body {
 .container {
   border-radius: 5px;
   background-color: #f15b42;
-  padding: 5px;
   box-sizing: border-box;
 }
 
@@ -174,6 +173,7 @@ h2 {
 .login,
 .profile,
 .edit-profile {
+  width: 100%;
   display: flex;
   justify-self: center;
   margin-top: 20px;
