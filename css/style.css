@@ -79,6 +79,7 @@ h2 {
 .filter {
   background-color: #ffd372;
   display: flex;
+  justify-content: center;
   justify-content: flex-end;
   border-radius: 5px;
   padding: 5px;
@@ -87,6 +88,7 @@ h2 {
 
 .filter button {
   margin-left: 5px;
+  margin-top: 0;
   font-weight: bold;
 }
 
@@ -307,7 +309,6 @@ dialog button {
 
 table {
   width: 100%;
-
   color: #2e2e2e;
   border-radius: 5px;
   margin-bottom: 20px;

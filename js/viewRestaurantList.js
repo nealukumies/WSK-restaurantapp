@@ -63,8 +63,9 @@ export async function viewRestaurantList(restaurants) {
     const weeklyA = document.createElement('button');
     weeklyA.innerHTML = 'Viikon ruokalista';
     weeklyA.addEventListener('click', () => renderWeekly(restaurant));
+
     let favorite;
-    if (user.favouriteRestaurant === restaurant._id) {
+    if (user && user.favouriteRestaurant === restaurant._id) {
       favorite = document.createElement('p');
       favorite.setAttribute('class', 'favorite-p');
       favorite.textContent = '⭐ Suosikki ⭐';

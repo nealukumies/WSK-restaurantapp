@@ -20,19 +20,20 @@ async function init() {
         const user = await getUserDetails(token);
         if (!user) {
           console.error('User data not found');
+        } else {
+          const favoriteButton = document.createElement('button');
+          const favoriteRestaurant = await getRestaurantById(
+            user.favouriteRestaurant
+          );
+          console.log('Favorite restaurant', favoriteRestaurant);
+          favoriteButton.innerHTML = favoriteRestaurant.name;
+          const filterBar = document.querySelector('.filter');
+          favoriteButton.addEventListener('click', () => {
+            console.log('Clicked favorite restaurant button');
+            viewRestaurantList([favoriteRestaurant]);
+          });
+          filterBar.prepend(favoriteButton);
         }
-        const favoriteButton = document.createElement('button');
-        const favoriteRestaurant = await getRestaurantById(
-          user.favouriteRestaurant
-        );
-        console.log('Favorite restaurant', favoriteRestaurant);
-        favoriteButton.innerHTML = favoriteRestaurant.name;
-        const filterBar = document.querySelector('.filter');
-        favoriteButton.addEventListener('click', () => {
-          console.log('Clicked favorite restaurant button');
-          viewRestaurantList([favoriteRestaurant]);
-        });
-        filterBar.prepend(favoriteButton);
       }
       const listButton = document.querySelector('.list-button');
       listButton.addEventListener('click', () =>

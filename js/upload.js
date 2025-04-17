@@ -39,7 +39,6 @@ uploadButton.addEventListener('click', async (event) => {
     console.log('Avatar Upload Response:', responseBody);
 
     if (response.ok) {
-      alert('Avatar updated successfully!');
       window.location.href = 'profile.html';
     } else {
       alert('Error uploading avatar: ' + responseBody.message);
