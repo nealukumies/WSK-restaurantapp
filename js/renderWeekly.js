@@ -21,7 +21,6 @@ export async function renderWeekly(restaurant) {
               </tr>
             </thead>
             `;
-          console.log(day.courses);
           const tbody = document.createElement('tbody');
           for (const course of day.courses) {
             const row = document.createElement('tr');

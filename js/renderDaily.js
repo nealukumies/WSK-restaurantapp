@@ -21,7 +21,6 @@ export async function renderDaily(restaurant) {
             `;
       const tbody = menuTable.querySelector('tbody');
       for (const course of menu) {
-        console.log('course', course);
         const row = document.createElement('tr');
         const coursetd = document.createElement('td');
         coursetd.setAttribute('class', 'course-td');
@@ -37,7 +36,6 @@ export async function renderDaily(restaurant) {
         tbody.appendChild(row);
       }
     } else {
-      console.log('No menu available for today.');
       const noMenu = document.createElement('p');
       noMenu.innerHTML = 'Ei ruokalistaa saatavilla.';
       dialog.appendChild(noMenu);
@@ -51,6 +49,6 @@ export async function renderDaily(restaurant) {
     });
     dialog.appendChild(closeButton);
   } catch (error) {
-    console.log('Error fetching menu: ' + error.message);
+    console.error('Error fetching menu: ' + error.message);
   }
 }
