@@ -14,9 +14,19 @@ const email = document.getElementById('email');
 username.value = userData.username;
 email.value = userData.email;
 
+const modal = document.getElementById('confirmModal');
+const confirmYes = document.getElementById('confirmYes');
+const confirmNo = document.getElementById('confirmNo');
 const deleteButton = document.createElement('button');
 deleteButton.innerHTML = 'Poista tili';
 deleteButton.addEventListener('click', async () => {
+  // Show the modal
+  modal.style.display = 'block';
+});
+
+// Handle "Yes" button click
+confirmYes.addEventListener('click', async () => {
+  modal.style.display = 'none'; // Hide modal
   const response = await fetch(
     'https://media2.edu.metropolia.fi/restaurant/api/v1/users/',
     {
@@ -34,6 +44,11 @@ deleteButton.addEventListener('click', async () => {
   } else {
     alert('Virhe käyttäjän poistamisessa.');
   }
+});
+
+// Handle "No" button click
+confirmNo.addEventListener('click', () => {
+  modal.style.display = 'none'; // Hide modal
 });
 
 const editButton = document.getElementById('edit-button');
